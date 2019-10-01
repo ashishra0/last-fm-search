@@ -15,5 +15,10 @@ module Demo
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.assets.quiet = true
+    config.session_store :cookie_store, key: Rails.application.credentials.secret_key_base
+    # Rails.logger = Logger.new(STDOUT)
+    # Rails.logger.level = Logger::DEBUG
+    # Rails.logger.datetime_format = "%Y-%m-%d %H:%M:%S"
   end
 end
