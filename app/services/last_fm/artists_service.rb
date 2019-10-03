@@ -1,7 +1,7 @@
 class LastFm::ArtistsService
   attr_accessor :result
-  API_URI = 'http://ws.audioscrobbler.com/2.0'.freeze
-  API_KEY = '1ca2cf614eeaa185c2b61753b434b599'.freeze
+  API_URI = Rails.application.credentials.last_fm_api_url.freeze
+  API_KEY = Rails.application.credentials.last_fm_api_key.freeze
 
   def execute(artist_name, method_name)
     begin
