@@ -1,0 +1,16 @@
+language: ruby
+cache: bundler
+rvm:
+- 2.5.1
+script:
+- bundle install --jobs=3 --retry=3
+- bundle exec rails db:create
+- bundle exec rails db:migrate
+- bundle exec rspec
+deploy:
+  provider: heroku
+  on:
+    repo: ashisra0/last-fm-search
+  api_key:
+    secure: Wo2s/QSr3R5whbxvD3fz6yZR3e3cKhGUXOSL/6R59hGuzSbzSAK8rukf3Beq1f1Ng6aHHRka4KQzH57IDRL6dRivubVL/uPeLsbF5RMy2pudzv/5G9i0x4Ag9jg+xqVQCYYG4TN06aamV/n0hs4En+zZvCAJN+hmMbKDJvGmBO7XLHjB8ZQyHigvGi6wT3nUXusFcM1sCfgVtRltaqdRf8SScdtPipjxwZZefetQMsEV8EB3FnOAaGDJRF0IBu4dfaVaBX8zkQXuRpM29wD0zrOUkUYyWE6atYQN/m5yzVWZVtjhANhahn2wKpXnuMXu7LFbWKDtxjF5emBnLfFR+pegNoeqSO2Jz2fEGm/qqWlavZV0DwYYL8s6669dXsoqpdd2xkxYn9s86MRwRfSlWLSU6mpRT/sEDJ0EphRpprjbc7v3sMY1N3A6AjBYKx0Z+XBPtRI5iL93saFSag+WfKn3qhMxP7AGKi7kck06OwRCoFCKTfjrY0zqYo4urYDRnIfP+8OC0Gon8w5D3/wAbyF61AevlSdduQBbEYzBToQVN0axMB91qZtcVYPKQ/i1W5MNYQlA1tkJCew1tmrGTr/yNq0ia8rmdsGfRhZVoZAIqjD+iBMkPdhrR2oOFW3e1DN+LQc3k1KDQ4OT4lFcCtwKKXK6EQid/+O7PrG1uOc=
+  app: last-fm-search

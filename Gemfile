@@ -14,6 +14,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'httparty'
+gem 'travis'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
