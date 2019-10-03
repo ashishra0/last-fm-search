@@ -12,6 +12,7 @@ require_relative 'support/vcr_setup'
 require 'webmock/rspec'
 SimpleCov.profiles.define 'no_coverage' do
   load_profile 'rails'
+  add_group 'Routes', 'config/routes'
   add_filter 'vendor'
   add_filter 'app/channels'
   add_filter 'app/mailers'
@@ -65,7 +66,7 @@ RSpec.configure do |config|
     end
   end
 
-  config.around(:each) do | example |
+  config.around(:each) do |example|
     if example.metadata[:turn_off_vcr]
       VCR.turn_off!
       example.run
