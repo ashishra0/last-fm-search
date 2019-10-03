@@ -33,6 +33,18 @@
       Playcount: <%= @artist_service_response['stats']['playcount']%>
     </div>
   </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Bio</h3>
+    </div>
+    <div class="panel-body">
+      <p class="small">Published on: <%= @artist_service_response['bio']['published'] %></p>
+      <p class="text-info"><%= @artist_service_response['bio']['summary'].gsub!(/(<[^>]*>)|\n|\t/s) {" "} %></p>
+      <% @artist_service_response['tags']['tag'].collect do |tag| %>
+        <p><span class="label label-primary"><%= tag['name'] %></span></p>
+      <% end %>
+    </div>
+  </div>
   <h3>Showing similar artists<span class="label label-default"></span></h3>
   <h6>About <%= @artist_service_response['similar']['artist'].count %> results</h6>
   <div id="search-results">
