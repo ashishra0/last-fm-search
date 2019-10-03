@@ -13,7 +13,7 @@ RSpec.describe 'Artists', type: :request do
       get '/', params: {search: {query: 'Dire Straits', method: 'getinfo'}}
 
       expect(response).to render_template(:index)
-      expect(response.body).to include("Signed in as #{user.username}")
+      expect(response.body).to include("#{user.username}")
       expect(response.body).to include('Dire Straits')
     end
 
