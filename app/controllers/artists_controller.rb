@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
   before_action :require_user
 
   def index
-    if params[:search]
+    if search_params
       @artist_service_response = LastFm::ArtistsService.new.execute(search_params[:query], search_params[:method]).result
       if @artist_service_response
         @artist_service_response = @artist_service_response.dig('artist')
@@ -14,7 +14,9 @@ class ArtistsController < ApplicationController
   end
 
   private
+
   def search_params
-    params.require(:search).permit(:query, :method)
+    return params.require(:search).permit(:query, :method) if params[:search]
+    nil
   end
 end
