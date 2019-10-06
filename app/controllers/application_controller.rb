@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def strip_tags
+    ActionController::Base.helpers.strip_tags(self)
+  end
+
 end
