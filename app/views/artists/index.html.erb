@@ -39,7 +39,7 @@
     </div>
     <div class="panel-body">
       <p class="small">Published on: <%= @artist_service_response['bio']['published'] %></p>
-      <p class="text-info"><%= @artist_service_response['bio']['summary'].gsub!(/(<[^>]*>)|\n|\t/s) {" "} %></p>
+      <p class="text-info"><%= strip_tags(@artist_service_response['bio']['summary']) %></p>
       <% @artist_service_response['tags']['tag'].collect do |tag| %>
         <p><span class="label label-primary"><%= tag['name'] %></span></p>
       <% end %>
