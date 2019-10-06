@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe LastFm::ArtistsService do
   describe '#execute' do
-    let(:api_url) { "http://ws.audioscrobbler.com/2.0?api_key=1ca2cf614eeaa185c2b61753b434b599&artist=Dire%20Straits&format=json&method=artist.getinfo" }
+    let(:api_url) { "http://ws.audioscrobbler.com/2.0?api_key=#{Rails.application.credentials.last_fm_api_key}&artist=Dire%20Straits&format=json&method=artist.getinfo" }
 
     context 'when api call succeeds', :vcr do
       it 'returns name of the artist from last fm' do
