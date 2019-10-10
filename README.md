@@ -1,11 +1,11 @@
-### Ruby on Rails template project
-
-This project is based on a GitLab [Project Template](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
-
-Improvements can be proposed in the [original project](https://gitlab.com/gitlab-org/project-templates/rails).
-
-### CI/CD with Auto DevOps
-
-This template is compatible with [Auto DevOps](https://docs.gitlab.com/ee/topics/autodevops/).
-
-If Auto DevOps is not already enabled for this project, you can [turn it on](https://docs.gitlab.com/ee/topics/autodevops/#enabling-auto-devops) in the project settings.
+## Last FM API Search App [![Build Status](https://travis-ci.org/ashishra0/last-fm-search.svg?branch=development)](https://travis-ci.org/ashishra0/last-fm-search) ![Heroku](https://heroku-badge.herokuapp.com/?app=last-fm-search)
+---
+##### Web App built on Ruby on Rails which gives you information about your favourite Artist.
+---
+ 
+#### Getting Started
+* The app is deployed [here](https://last-fm-search.herokuapp.com/).
+* Create an account and then Log in.
+* Enter any Artist name and hit search.
+* You will find information about the artist such as: <b>active listeners, playcount, Bio and other similar Artists name</b>.
+---
