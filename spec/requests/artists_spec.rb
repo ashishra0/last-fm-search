@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Artists', type: :request do
   describe 'Search Similar Artists', :vcr do
-    let(:api_url) { "http://ws.audioscrobbler.com/2.0?api_key=1ca2cf614eeaa185c2b61753b434b599&artist=Dire%20Straits&format=json&method=artist.getinfo" }
+    let(:api_url) { "http://ws.audioscrobbler.com/2.0?api_key=#{Rails.application.credentials.last_fm_api_key}&artist=Dire%20Straits&format=json&method=artist.getinfo" }
     let(:user) { FactoryBot.create(:user) }
 
     it 'allows users to search for an artist when logged in and having valid search parameters' do
