@@ -15,6 +15,7 @@ RSpec.describe 'Users', type: :request do
 
     it 'should not allow users to sign up with invalid username' do
       post "/users", params: {user: {username: 'valid-user', password: 'V@lidPassw0rd'}}
+      post "/users", params: {user: {username: 'abc', password: 'V@lidPassw0rd'}}
 
       expect(response).to have_rendered(:new)
     end
@@ -37,7 +38,7 @@ RSpec.describe 'Users', type: :request do
     it 'does not allow users to change password with a invalid password' do
       get edit_user_url(user.id)
       put "/users/#{user.id}", params: {user: {password: ''}}
-
+      put "/users/#{user.id}", params: {user: {password: 'abc'}}
       expect(response).to have_rendered(:edit)
     end
 
