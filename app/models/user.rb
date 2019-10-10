@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   USERNAME_FORMAT = /\A[a-zA-Z0-9]+\z/.freeze
   has_secure_password
-  validates :password, presence: true
+  validates :password, presence: true, length: { minimum: 6, maximum: 20}
   validates :username,
             presence: true,
             uniqueness: { case_sensitive: true },
