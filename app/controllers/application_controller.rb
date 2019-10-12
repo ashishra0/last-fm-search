@@ -19,9 +19,4 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
-
-  def strip_tags
-    ActionController::Base.helpers.strip_tags(self)
-  end
-
 end
