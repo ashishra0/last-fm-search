@@ -1,0 +1,58 @@
+<h3>Search for artists </h3>
+<div class="container" id="artist-lookup">
+  <%= form_tag root_path, method: :get, id: 'artists-search' do %>
+    <% if @artist_service_response %>
+      <div class="form-group row no-padding text-center col-md-12">
+        <div class="col-sm-1">
+          <%= button_to 'Search Again', root_path, method: :get, class: "btn btn-md btn-success" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="form-group row no-padding text-center col-md-12">
+        <div class="col-md-10">
+          <%= text_field_tag 'search[query]', nil, placeholder: "Type Artist Name", autofocus: true, class: "form-control search-box input-lg" %>
+          <%= hidden_field_tag 'search[method]', 'getinfo' %>
+        </div>
+        <div class="col-md-2">
+          <%= button_tag(type: :submit, class: "btn btn-lg btn-success", id: 'submit-search') do %>
+            Search
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<% if @artist_service_response %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @artist_service_response['name']%></h3>
+    </div>
+    <div class="panel-body">
+      <p><%= link_to('View artist profile', @artist_service_response['url']) %></p>
+      <p>Active listeners: <%= @artist_service_response['stats']['listeners']%></p>
+      Playcount: <%= @artist_service_response['stats']['playcount']%>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Bio</h3>
+    </div>
+    <div class="panel-body">
+      <p class="small">Published on: <%= @artist_service_response['bio']['published'] %></p>
+      <p class="text-info"><%= strip_tags(@artist_service_response['bio']['summary']) %></p>
+      <% @artist_service_response['tags']['tag'].collect do |tag| %>
+        <p><span class="label label-primary"><%= tag['name'] %></span></p>
+      <% end %>
+    </div>
+  </div>
+  <h3>Showing similar artists<span class="label label-default"></span></h3>
+  <h6>About <%= @artist_service_response['similar']['artist'].count %> results</h6>
+  <div id="search-results">
+    <% @artist_service_response['similar']['artist'].collect do |artist| %>
+      <ul class="list-group">
+        <li class="list-group-item"><%= artist['name']%></li>
+        <li class="list-group-item"><%= link_to('View artist profile', artist['url']) %></li>
+      </ul>
+    <% end %>
+  </div>
+<% end %>

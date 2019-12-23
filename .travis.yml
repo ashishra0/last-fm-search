@@ -1,0 +1,30 @@
+language: ruby
+cache: bundler
+services:
+- postgresql
+before_script:
+- psql -c 'create database demo_test;' -U postgres
+rvm:
+- 2.5.1
+script:
+- bundle install --jobs=3 --retry=3
+- bundle exec rails db:create
+- bundle exec rails db:migrate
+- bundle exec rspec
+branches:
+  only:
+  - development
+deploy:
+  provider: heroku
+  on:
+    repo: ashishra0/last-fm-search
+    branch: development
+  api_key:
+    secure: 0QSSJq2zs81k+lNqnE3jBSmt3DJU/vKt+AahLGX8y5CeheGxVt/QvvEYVGGQpG6uMYUF0gHapqMC41NgBZGtGndZDpQvPgZmnQ7joBg9pBfyysW8j/O3o+LbWgx/eG1DVdhF+ua8Yn8B3cRoqzYqareYMwXEu0gNCOHH07U6cCVaxEfZZ/doNt84Y+DwIcEvZMWFJ5Hn3FZqQz45L/bhvTKDJi8Ignkn6jEiAisnpNFJA6usy1oXbEk67KW8n/ISRhYXJxyPPIkjyJsEN7+b2ocKgN0PRsCRTUz7Pj/itHoXRI3Ujw8S+ie0ScVRDTTviT+7TgU6fOjvrd1RJN7XhPdVaHuHux+zdHCb2bsCKq8o2gjeY9E5KKg2FgQ0Fqjirvq6Q+XmMabQhmIbTQMqZw1Y2TYZbd3RlVzx0jL/noRfPZyjcEXawlrbQizWraWVqM24iH6hw6lcpqdq7MD3wJvKoxyVVBxU5pb7fh44Ps+7zAHFxuRXZOwGmw02aGgqAlUwuipQkvu04KO02sZiYRnzRK4JoOQEzi/xeDGnDvD4UGBH8PYUaXyEe5w9pH0NIJDoa9/qa7rr88so4ObKhAxeXULVtkPErx4mxrhO0NwjNuZS95mzAWmQXLOrdj4oeVWinHP8zPgV1GQu7z4tRBOT1cQ+P9qq/1LX5nkq9uw=
+  app: last-fm-search
+  run:
+  - rake db:migrate
+  - restart
+  - rake cleanup
+env:
+  secure: Uc8r7l07Z+vSfpp5eQzEA24UfN5nUvqOBAWsYGVo60Yw0tit4KPgYw4DpVlk7RUwiqYl4/H+T4nyEs+pfoSXTkRd/LoLjeY9yzVklFNkRvRYoUV8kp0iKlOwcfSio2xa/GQ99V/shjPexz6WNnxNybQ4TcLeF6JXPmdnfzZCFNozLGw8RhOAco+G1TXqiVecf/EvPKK/i3UJL1uVn6rTRY91vrP2FTKD2Ecusr/98EOoMIi2sBOhZRs8FmrMVDFBt/QJkLIsSQ5hwZxbx4kMzLdxTDzZGJ7LJz3OB9yfPmz7zF13iTPJErBcDwDJnM1efMzPzxosMiB4TqA0qiByjHO6qmNGFXYxTQsaNXTTNrq6zgnlOt9uEUEDprIoiZXEwSJwxXGcURbgAtyHnbu4JsPyYruRpa6w3RwbcN+UMefhZQLKXpQoCwQwP2qnu5wdFZgyo+R5zaKNG/OhgZ1i4Nxga8jU5Q4ZodFzsgYKv4hAX+BAg7dTUobwgZWb93ZoYBivIqL5/bglhDQmtVmcYT5iw8nUrIFw4SWtQuRGwdbAjwvZJBCwlqAPowYWQsSDZUubl8NaBnk7oyrM5s5/bC/YmFkG71oIQ7jgW850u2MvxpQxG5l7jfnjI3BFgbpb6FhAGUicSNF2ESb5dCW70z9uroQ4DxzX+QvR84H6Ycs=

@@ -1,11 +1,46 @@
-### Ruby on Rails template project
+## Last FM API Search App
+---
+[![Build Status](https://travis-ci.org/ashishra0/last-fm-search.svg?branch=development)](https://travis-ci.org/ashishra0/last-fm-search) ![Heroku](https://heroku-badge.herokuapp.com/?app=last-fm-search)
 
-This project is based on a GitLab [Project Template](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
+<i>This is a simple web app which interacts with the [last fm](https://www.last.fm/) API and displays information related to your favourite artist. </i>
+___
+### Live demo
+---
+This app is still under development. As a result, it shouldn't be considered as finished product. 
 
-Improvements can be proposed in the [original project](https://gitlab.com/gitlab-org/project-templates/rails).
+[A live demo can be found here](https://last-fm-search.herokuapp.com/) - have fun!
 
-### CI/CD with Auto DevOps
+### Getting started
+---
+1) Create an account.
+2) Log in using the newly created account credentials.
+3) Type in the name of the artist you want to look up and hit search.
+4) Search results will be displayed on the page.
 
-This template is compatible with [Auto DevOps](https://docs.gitlab.com/ee/topics/autodevops/).
+Refer the screenshots
 
-If Auto DevOps is not already enabled for this project, you can [turn it on](https://docs.gitlab.com/ee/topics/autodevops/#enabling-auto-devops) in the project settings.
+1) Signup
+
+![](app/assets/images/signup.png)
+
+2) Login
+
+![](app/assets/images/login.png)
+
+3) Type in artist name
+
+![](app/assets/images/search.png)
+
+4) Check it out, it works!
+
+![](app/assets/images/results.png)
+
+Tech Stack
+---
+
+| Tech      | Version |
+| ----------|:-------:|
+| Rails     | 5.2.3   |
+| Postgres  | 0.18.4  |
+| Ruby      | 2.5.0   |
+---
